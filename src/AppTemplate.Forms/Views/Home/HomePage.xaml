@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="AppTemplate.Forms.Views.Home.HomePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="Home">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+
+            <xct:IsNotNullOrEmptyConverter x:Key="DateIsNotNullOrEmptyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout HorizontalOptions="Fill"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource Accent}">
+            <Label Margin="20"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   TextColor="White"
+                   Text="App Sample" />
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="10"
+                         Padding="30,24,30,24"
+                         Orientation="Vertical">
+                <Label FontSize="Title"
+                       Text="Sample Page" />
+                <Label Padding="0,0,0,0"
+                       FontSize="16"
+                       Text="Sample page to demonstrate some of the core features of MVVM, WeakEventHandler, and IoC" />
+                <Label Padding="0,24,0,0"
+                       FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="App Version: " />
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding AppVersion}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Margin="0,10,0,0"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        Command="{Binding FetchLatestTimeCommand}"
+                        Text="Toggle Fetch time in France" />
+
+                <Label IsVisible="{Binding CurrentTimeInFrance, Converter={StaticResource DateIsNotNullOrEmptyConverter}}"
+                       Padding="0,24,0,0"
+                       FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Time in France: " />
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding CurrentTimeInFrance}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
