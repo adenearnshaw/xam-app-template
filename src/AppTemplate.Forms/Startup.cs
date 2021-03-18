@@ -13,6 +13,8 @@ namespace AppTemplate.Forms
         {
             CoreBootstrapper.Instance.ConfigureServices(services);
 
+            services.AddHttpClient();
+
             // Register any dependencies here that are implemented by AppTemplate.Forms
 
             services.AddSingleton<IAppInfoService, AppInfoService>();
