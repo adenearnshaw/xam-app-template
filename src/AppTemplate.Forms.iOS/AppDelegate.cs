@@ -24,14 +24,10 @@ namespace AppTemplate.Forms.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            this.ShinyFinishedLaunching(new Startup());
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }
-
-        public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
-            => this.ShinyPerformFetch(completionHandler);
     }
 }

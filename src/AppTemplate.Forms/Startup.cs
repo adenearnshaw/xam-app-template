@@ -2,6 +2,7 @@
 using AppTemplate.Core.Services;
 using AppTemplate.Forms.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Shiny;
 using System;
 
@@ -9,8 +10,9 @@ namespace AppTemplate.Forms
 {
     public class Startup : ShinyStartup
     {
-        public override void ConfigureServices(IServiceCollection services)
+        public override void ConfigureServices(IServiceCollection services, IPlatform platform)
         {
+            Extensions.RegisterPostBuildAction(services, sp => CoreServiceLocator.SetProvider(sp));
             CoreBootstrapper.Instance.ConfigureServices(services);
 
             services.AddHttpClient();
@@ -18,14 +20,13 @@ namespace AppTemplate.Forms
             // Register any dependencies here that are implemented by AppTemplate.Forms
 
             services.AddSingleton<IAppInfoService, AppInfoService>();
-        }
 
-        public override void ConfigureApp(IServiceProvider provider)
+        }        
+
+        public override void ConfigureLogging(ILoggingBuilder builder, IPlatform platform)
         {
-            base.ConfigureApp(provider);
-
-            // Sets the container in CoreServiceLocator so we can resolve dependencies without DI
-            CoreServiceLocator.SetProvider(provider);
+            base.ConfigureLogging(builder, platform);
+            builder.AddConsole();
         }
     }
 }
