@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
-using Shiny;
+[assembly: Shiny.ShinyApplication(
+    ShinyStartupTypeName = "AppTemplate.Forms.Startup",
+    XamarinFormsAppTypeName = "AppTemplate.Forms.App"
+)]
 
 namespace AppTemplate.Forms.iOS
 {
