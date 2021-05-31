@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Aden Earnshaw",
+  "classifications": [
+    "Mobile",
+    "Solution"
+  ],
+  "name": "Xamarin App Template",
+  "shortName": "xamapp",
+  "defaultName": "MyApp",
+  "identity": "com.a10w.xam-app-template",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "AppTemplate",
+  "preferNameDirectory": true,
+  "guids": [
+    "53758D71-4691-4C05-8A38-FCB716C066B9",
+    "B73C26CB-A782-4085-AE2C-28C6621A3D9B",
+    "9320152F-77B6-4492-AE5B-A44BB0E3D9FC",
+    "F33A36C5-FB7F-47E5-8E13-E87ED92FB841",
+    "DDD5D7E2-2D04-480F-9614-F320F5A8A998",
+    "66AEF619-CF07-4764-85E2-F0832AAF2CE4"
+  ],
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "netcoreapp3.1",
+          "description": "Target netcoreapp3.1"
+        }
+      ],
+      "replaces": "netcoreapp3.1",
+      "defaultValue": "netcoreapp3.1"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "AppTemplate.sln"
+    }
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/[Bb]in/**",
+            "**/[Oo]bj/**",
+            ".template.config/**/*",
+            "**/.azuredevops/**",
+            "**/.vs/**",
+            "**/.git/**",
+            "**/.gitignore",
+            "**/LICENSE",
+            "**/README.md",
+            "**/*.nuspec"
+          ]
+        }
+      ]
+    }
+  ]
+}
